@@ -65,15 +65,16 @@ author:
 #    - label: "Website"
 #      icon: "fas fa-fw fa-link"
 #      url: "https://"
+    - label: "St. Louis, MO"
+      icon: "fab fa-fw fa-map-marker-alt"
+    - label: "Microsoft"
+      icon: "fab fa-fw fa-building-o"
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
       url: "https://github.com/joelwaymack"
     - label: "LinkedIn"
       icon: "fab fa-fw fa-linkedin"
       url: "https://www.linkedin.com/in/joel-waymack"
-    - label: "Twitter"
-      icon: "fab fa-fw fa-twitter-square"
-      url: "https://twitter.com/joelwaymack"
 
 footer:
   links:
