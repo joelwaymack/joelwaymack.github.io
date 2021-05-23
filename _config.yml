@@ -67,7 +67,7 @@ author:
 #      icon: "fas fa-fw fa-link"
 #      url: "https://"
     - label: "Microsoft"
-      icon: "fab fa-fw fa-building-o"
+      icon: "fab fa-fw fa-building"
       url: "https://azure.microsoft.com"
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
