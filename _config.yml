@@ -60,7 +60,7 @@ plugins:
 author:
   name   : "Joel Waymack"
   avatar : "/assets/images/bio-photo.jpg"
-  bio    : "Software Developer; Fitness Enthusiast; Husband and Father; Pastor"
+  bio    : "Software developer, fitness enthusiast, husband and father, pastor."
   location : "St. Louis, MO"
   links:
     - label: "GitHub"
