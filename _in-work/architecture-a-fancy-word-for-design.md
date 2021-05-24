@@ -1,5 +1,7 @@
 ---
 title: "Architecture: A Fancy Word for Design"
+categories:
+  - Tech
 tags:
   - Software
   - Architecture

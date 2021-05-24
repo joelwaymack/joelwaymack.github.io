@@ -60,15 +60,9 @@ plugins:
 author:
   name   : "Joel Waymack"
   avatar : "/assets/images/bio-photo.jpg"
-  bio    : "I am a Cloud Solution Architect at Microsoft and a developer at heart."
+  bio    : "Software Developer; Fitness Enthusiast; Husband and Father; Pastor"
   location : "St. Louis, MO"
   links:
-#    - label: "Website"
-#      icon: "fas fa-fw fa-link"
-#      url: "https://"
-    - label: "Microsoft"
-      icon: "far fa-fw fa-building"
-      url: "https://azure.microsoft.com"
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
       url: "https://github.com/joelwaymack"
