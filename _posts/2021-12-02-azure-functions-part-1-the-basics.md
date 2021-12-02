@@ -7,7 +7,6 @@ tags:
   - Azure
 ---
 
-# Azure Functions Part 1 - The Basics
 If you have spent any time in the cloud computing world, you have probably head of various "as a Service" offerings. Infrastruture as a Service (IaaS), Platform as a Service (PaaS), Database as a Service (DbaaS), Software as a Service (SaaS), Functions as a Service (FaaS) etc. Each of these offerings provide different benefits and are useful in certain situations.
 
 FaaS offerings are central to event-driven systems. No matter what cloud provider you use, the overall goal for FaaS is to execute code based on a triggering event. These events can be sourced from a variety of sources (HTTP request, a message arrives on a queue, a file is uploaded to storage, a timer expires, etc.). The key aspect of FaaS in these scenarios is that the function code should be small and scoped to a single task based off the event.
