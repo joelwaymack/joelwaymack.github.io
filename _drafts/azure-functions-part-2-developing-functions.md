@@ -1,16 +1,14 @@
 ---
-title: "Azure Static Web Apps"
+title: "Azure Functions Part 2 - Developing Functions"
 categories:
   - Tech
 tags:
-  - Azure
-  - SPA
   - Azure Functions
   - Azure DevOps
   - Azure Static Web Apps
 ---
 
-Azure Static Web Apps provides a platform for hosting modern, Single-Page-Application (SPA) web applications with an underlying back-end web API all in one service. In this post, I go through and try to rehost an existing Angular App and its backing API on Azure Static Web Apps using Azure DevOps.
+Event-driven architecture is 
 
 ## Background
 Almost all new web applications are built using a SPA library/framework with a back-end web API so I was, naturally, very excited when the Public Preview version of Azure Static Web Apps was announced. It seemed like the perfect service for modern Web App development but, after I played around with it for a bit, I was generally disappointed with some of the tooling choices they made.
