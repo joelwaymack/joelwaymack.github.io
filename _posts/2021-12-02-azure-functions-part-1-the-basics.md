@@ -7,7 +7,7 @@ tags:
   - Azure
 ---
 
-If you have spent any time in the cloud computing world, you have probably heard of various "as a Service" offerings. Infrastruture as a Service (IaaS), Platform as a Service (PaaS), Database as a Service (DbaaS), Software as a Service (SaaS), Functions as a Service (FaaS) etc. Each of these offerings provide different benefits and are useful in certain situations.
+If you have spent any time in the cloud computing world, you have probably heard of various "as a Service" offerings. Infrastruture as a Service (IaaS), Platform as a Service (PaaS), Database as a Service (DbaaS), Software as a Service (SaaS), Functions as a Service (FaaS), etc. Each of these offerings provide different benefits and are useful in certain situations.
 
 Functions as a Service (FaaS) offerings are central to event-driven systems. No matter what cloud provider you use, the overall goal for FaaS is to execute code based on a triggering event. These events can be sourced from a variety of sources (HTTP request, a message arrives on a queue, a file is uploaded to storage, a timer expires, etc.). The key aspect of FaaS in these scenarios is that the function code should be small and scoped to a single task based off the event.
 
@@ -50,7 +50,7 @@ I want to mention two components that are internal to a Function App because the
 
 The host process monitors the trigger for each function in the app and executes the input and output binding calls for each function invocation. It also monitors (through an additional component called the Scale Controller) event throughput and recommends scaling the number of app instances currently provisioned in or out to handle load properly.
 
-The worker process is where your function code lives. The Functions host will invoke the Functions in the worker process when triggering events occur and the worker process will pass back results to the host process when it finishes execution an invocation.
+The worker process is where your function code lives. The Functions host will invoke the functions in the worker process when triggering events occur and the worker process will pass back results to the host process when it finishes invocation execution.
 
 The worker process is language specific to whatever language you chose for your Function App while the host process, which you don't really touch, is written in .NET and maintained by the Azure Functions team.
 
