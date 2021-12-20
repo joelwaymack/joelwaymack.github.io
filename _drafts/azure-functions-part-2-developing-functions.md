@@ -4,25 +4,50 @@ categories:
   - Tech
 tags:
   - Azure Functions
-  - Azure DevOps
-  - Azure Static Web Apps
+  - Azure
 ---
 
-Event-driven architecture is 
+In the previous post, we looked at [the basics of Azure Functions](https://waymack.net/azure-functions-part-1-the-basics). In this post, we are going to jump in and build a Function App.
 
-## Background
-Almost all new web applications are built using a SPA library/framework with a back-end web API so I was, naturally, very excited when the Public Preview version of Azure Static Web Apps was announced. It seemed like the perfect service for modern Web App development but, after I played around with it for a bit, I was generally disappointed with some of the tooling choices they made.
+## Tooling
 
-One of the big drawbacks was the service's deep integration with GitHub for hosting and deployment. I'm never a fan of firm dependencies on a specific tool-chain for deployment. I love using Azure DevOps (AzD) for my repos and pipelines but, after looking over the docs, it seems there is very limited support for starting a new app using AzD. 
+There are multiple tooling options for building a Function App. To try and keep things as generic as possible for your desired operating system, editor, and language, I generally recommend the following tools:
 
-The service went to [General Availability (GA) on May 12, 2021](https://azure.microsoft.com/en-us/blog/develop-production-scale-modern-web-apps-quickly-with-azure-static-web-apps/) and I had assumed they would have broken it away from the various tooling dependencies they had taken for the Public Preview version of the service...but they didn't. There are a few snippets on how to use AzD but all of the docs assume you're starting a new app from scratch based on their GitHub starter repos.
+* [Visual Studio Code](https://code.visualstudio.com/) for code editing
+* [Azure Functions Core Tools](https://docs.microsoft.com/en-us/azure/azure-functions/functions-run-local) for CLI Functions setup
+* The [language specific SDK/Runtime](https://docs.microsoft.com/en-us/azure/azure-functions/supported-languages#languages-by-runtime-version) you want to use (I plan on using C# and .NET 6.0 for my Function App by you are more than welcome to use whatever you would like.)
+* The [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli) to set up resources in Azure
 
-What if you have a SPA app that you want to migrate over to this service? What if you want to use a different repository service like GitLab, Azure DevOps, or BitBucket? 
+Sometimes you will need additional tools for local development depending on the triggers and bindings you want to use like the [Cosmos DB Emulator](https://docs.microsoft.com/en-us/azure/cosmos-db/local-emulator) for local DB development, [Azurite](https://github.com/Azure/Azurite) for local storage development, or [Storage Explorer](https://docs.microsoft.com/en-us/azure/vs-azure-tools-storage-manage-with-storage-explorer) to manipulate BLOBs in local storage. You can also stand up dependent resources for development directly in Azure. Many times, that's the easiest route.
 
-Keep reading to find out what all I learned.
+## Solution Overview
 
-## The Existing App
-The exisiting Angular app tracks employees for a company. The employees are assigned to a department, a role in that department, and an overall level within the company. Let's be honest, there's nothing flashy going on here. In general, the app won't need any modification to move it into Azure Static Web Apps since Angular apps transpile down to static assets (HTML, CSS, JavaScript) that are served up like any basic website. We'll need to modify some of the configuration properties for the service and some URIs for connecting to the web API, but it should remain as-is.
+I always recommend learning a new language or framework using a real-world scenario because it helps you understand the intricacies of the technology. Azure Functions is no different. Looking at a full solution will be more helpful than a "Hello, world!" scenario. To that end, we're going to build out the following solution:
 
-To support the app, there is an ASP.NET Core web API that tracks the employee data. 
+![Functions Solution](/assets/images/azure_functions/functions_solution_architecture.png)
 
+Let's walk through what all is going on in this architecture. This may look complicated but it's actually pretty straightforward to set up.
+
+1. An HTTP Post request with an order is sent to the Create Order function. (You can query the status of an order at any time with the Get Order function.)
+1. The new order is saved to the Sales database Orders container.
+1. The Process Order function is triggered with the change feed from the Orders container.
+1. The new order is sent on to the Order Events Event Grid topic.
+1. The Process Payment function is triggered to do payment processing.
+1. An update is sent to the Orders container for the order that now has a processed payment.
+1. The Process Order function is triggered with the change feed from the Orders container.
+1. The payment-processed order is sent on to the Order Events Event Grid topic.
+1. The Process Shipping function is triggered and creates a new invoice.
+1. The invoice is stored in the invoices container in the Sales storage account.
+1. An update is sent to the Orders container for the order that has been shipped.
+
+### Architectural Decisions
+
+Before we can jump in and start beep-booping away, we'll need to make a few architectural decisions.
+
+First, to keep from having to install lots of local dependencies, we'll deploy all the components into Azure except for the Function App. That way we can do local functions development on our machine but still have a high degree of confidence that everything will work correctly.
+
+Second, we'll group all of our functions for this solution into a single Function App. In a true productionized system, we may split these out into separate Function Apps depending on scaling and throughput concerns.
+
+## Infrastucture setup
+
+Before we start developing our functions, we'll need to set up the dependent resources in Azure.
