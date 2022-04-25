@@ -110,3 +110,9 @@ tag_archive:
 
 analytics:
   provider: "custom"
+
+comments:
+  provider: "facebook"
+  facebook:
+    appid: 536108537902839
+    
