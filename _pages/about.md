@@ -14,4 +14,4 @@ While I'm a software developer, solution architect, and manager, I would say tha
 
 My family is very important to me. I have a wife, Laura, and two banshees (daughters), Lily and Kenzie.
 
-I'm also fairly active in my local church where I act as one of the non-paid pastors. You'll also find me lifting weights, reading a lot of books, and enjoying a good glass of scotch.
+I'm also fairly active in my local church and I love lifting weights, reading a lot of books, and enjoying a good glass of scotch.
