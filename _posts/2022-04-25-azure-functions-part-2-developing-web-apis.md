@@ -7,6 +7,7 @@ tags:
   - Azure
 toc: true
 toc_label: "Function App Web APIs"
+toc_sticky: true
 ---
 
 In the previous post, we looked at [the basics of Azure Functions](https://waymack.net/azure-functions-part-1-the-basics). In this post, we are going to jump in and create a Function App with web API endpoints. The entire Function App can be found [in this repo](https://github.com/joelwaymack/subscription-processing-functions-csharp)
