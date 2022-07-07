@@ -38,7 +38,7 @@ We already have a Cosmos Database set up from part 2 when we built out our APIs.
 
 ### Messaging and Eventing (a quick aside)
 
-You may be wondering "why are we using Service Bus instead of Event Hub or Event Grid?" Great question! There are three primary eventing and messaging services in Azure. Microsoft provides a great [article to help understand the differences](https://docs.microsoft.com/en-us/azure/event-grid/compare-messaging-services) but this is how I think about it:
+You may be wondering "why are we using Service Bus instead of Event Hub or Event Grid?" Great question! There are three primary eventing/messaging services in Azure. Microsoft provides a great [article to help understand the differences](https://docs.microsoft.com/en-us/azure/event-grid/compare-messaging-services) but this is how I think about it:
 
 * Event Hub - Used for massive event data ingestion. Supports AMQP. Consumers control their own checkpoint of what events they read across partitions. Supports Kafka.
 * Event Grid - Used for distributed, reactive systems. Consumers create subscriptions on topics and define a delivery endpoint. Event batches are sent as web requests.
@@ -50,4 +50,24 @@ In this solution we're using Service Bus because of the guaranteed delivery, ext
 
 Now we get to the fun part: building out the processing pipeline for subscription payments.
 
-### 
+### Process New Subscriptions
+
+Whenever a new subscription is created by the API, a new document is added to the Cosmos database. Cosmos has a feature called the change feed that allows consumers to listen to these document changes. We're going to trigger a new ProcessNewSubscription Function whenever a subscription is added to the database.
+
+1. Create a new file named **Handlers/ProcessSubscriptionHandler.cs** to hold our new functions.
+1. Add the Service Bus Functions package by running the following on the command line in the same directory as your **.csproj** file.
+
+  ```dotnetcli
+  dotnet add package Microsoft.Azure.WebJobs.Extensions.ServiceBus
+  ```
+
+1. Add a PaymentDay property to the Subscription model to represent which day of the month a subscription payment should be made.
+
+  ```csharp
+  [JsonProperty("paymentDay")]
+  public int? PaymentDay { get; set; }
+  ```
+
+```csharp
+
+```
