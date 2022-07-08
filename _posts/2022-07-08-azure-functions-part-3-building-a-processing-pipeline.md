@@ -22,7 +22,7 @@ As a reminder, this is the solution we're building out.
 
 For this post, we are going to build out the following processing workflow:
 
-1. A when a new subscription is saved to Cosmos, the **ProcessNewSubscription** Function sets up the new subscription and submits the first payment.
+1. When a new subscription is saved to Cosmos, the **ProcessNewSubscription** Function sets up the new subscription and submits the first payment.
 1. A daily timer is set up to trigger the **RetrieveDailySubscriptions** Function which submits subscriptions for payment if it is their monthly payment day.
 1. Subscription payments from both of these sourcing Functions are dropped on a Service Bus queue to trigger the **ProcessSubscriptionPayment** Function which processes the payment and saves the payment data back to the Payments Cosmos collection.
 
@@ -42,7 +42,7 @@ We already have a Cosmos Database set up from part 2 when we built out our APIs.
 
 ### Messaging and Eventing (a quick aside)
 
-You may be wondering "why are we using Service Bus instead of Event Hub or Event Grid?" Great question! There are three primary eventing/messaging services in Azure. Microsoft provides a great [article to help understand the differences](https://docs.microsoft.com/en-us/azure/event-grid/compare-messaging-services) but this is how I think about it:
+You may be wondering "why are we using Service Bus instead of Event Hub or Event Grid?" Great question! There are three primary eventing/messaging services in Azure. Microsoft provides a great [article to help understand the differences](https://docs.microsoft.com/en-us/azure/event-grid/compare-messaging-services), but this is how I think about it:
 
 * Event Hub - Used for massive event data ingestion. Supports AMQP. Consumers control their own checkpoint of what events they read across partitions (events aren't consumed). Supports Kafka. Requires idempotent processing.
 * Event Grid - Used for distributed, reactive systems. Consumers create subscriptions on topics and define a delivery endpoint. Event batches are sent as web requests.
@@ -115,7 +115,7 @@ Whenever a new subscription is created by the API, a new document is added to th
 
 ### Retrieving Subscriptions Daily
 
-The next step is setting up our system is to retrieve subscriptions when it is time to process their monthly payment. To do this, we'll create a new Function called **ProcessDailySubscriptions** in the **ProcessSubscriptionHandler** class and use a timer trigger. We could use a Cosmos input binding with a SQL query to retrieve all the subscriptions for today but the query would get pretty gnarly since months don't have the same number of days and Cosmos doesn't have a robust set of Date functions for us to use. Instead, we'll have the input binding give us the Cosmos DocumentClient class so we can craft our own logic for retrieving subscriptions. (If I was using a different language, I would need to use the Cosmos library for that language to do this part instead of an input binding. The in-process version of C# Functions gives us a little more flexibility.)
+The next step is setting up our system is to retrieve subscriptions when it is time to process their monthly payment. To do this, we'll create a new Function called **ProcessDailySubscriptions** in the **ProcessSubscriptionHandler** class and use a timer trigger. We could use a Cosmos input binding with a SQL query to retrieve all the subscriptions for today, but the query would get pretty gnarly since months don't have the same number of days and Cosmos doesn't have a robust set of Date functions for us to use. Instead, we'll have the input binding give us the Cosmos DocumentClient class so we can craft our own logic for retrieving subscriptions. (If I was using a different language, I would need to use the Cosmos library for that language to do this part instead of an input binding. The in-process version of C# Functions gives us a little more flexibility.)
 
 ```csharp
 [FunctionName("ProcessDailySubscriptions")]
