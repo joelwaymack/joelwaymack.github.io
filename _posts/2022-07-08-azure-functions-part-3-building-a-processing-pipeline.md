@@ -12,6 +12,8 @@ toc_sticky: true
 
 In the previous posts, we looked at [the basics of Azure Functions](https://waymack.net/azure-functions-part-1-the-basics) and [building Azure Functions Web APIs](https://waymack.net/azure-functions-part-2-developing-web-apis). In this post, we are going build out the rest of the subscription processing pipeline that we outlined in part 2.
 
+The complete code can be found at <https://github.com/joelwaymack/subscription-processing-functions-csharp>.
+
 ## Solution Overview
 
 As a reminder, this is the solution we're building out.
@@ -250,3 +252,5 @@ Let's add in a couple of API route to retrieve Payments.
 ## Wrap Up
 
 Now we have a fully functioning subscription processing pipeline using Azure Functions, Azure Cosmos DB, Azure Storage, and Azure Service Bus.
+
+The complete code can be found at <https://github.com/joelwaymack/subscription-processing-functions-csharp>.
