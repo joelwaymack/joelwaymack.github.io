@@ -134,7 +134,7 @@ public class Subscription
     [JsonProperty("id")]
     public Guid Id { get; set; }
     [JsonProperty("customerId")]
-    public string customerId { get; set; }
+    public string CustomerId { get; set; }
     [JsonProperty("level")]
     public SubscriptionLevel Level { get; set; }
     [JsonProperty("createdTimestamp")]
@@ -201,7 +201,7 @@ public static async Task<IActionResult> CreateSubscription(
     string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
     var subscription = JsonConvert.DeserializeObject<Subscription>(requestBody);
     subscription.Id = Guid.NewGuid();
-    subscription.customerId = customerId;
+    subscription.customerId = CustomerId;
     subscription.CreatedTimestamp = DateTime.UtcNow;
     await subscriptionsOutput.AddAsync(subscription);
 
