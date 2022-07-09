@@ -92,6 +92,7 @@ defaults:
       share: true
       related: true
       show_date: true
+      teaser: /assets/images/default-teaser.jpg
   # _pages
   - scope:
       path: "_pages"

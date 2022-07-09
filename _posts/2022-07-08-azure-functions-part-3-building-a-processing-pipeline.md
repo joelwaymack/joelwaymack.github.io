@@ -201,7 +201,7 @@ Now we need to process the payment requests coming from our Service Bus queue. W
 
 ### Payments API
 
-Let's add in a couple of API route to retrieve Payments.
+Let's add in a couple of API routes to retrieve Payments.
 
 1. Create a new handler file called **PaymentApiHandler.cs**
 1. Add the following function to retrieve payments for a specific customer.
