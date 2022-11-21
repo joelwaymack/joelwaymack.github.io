@@ -7,9 +7,9 @@ tags:
   - Leadership
 ---
 
-I was listening in on a meeting recently and one of my coworkers said, "Let me see if I can find the correct resource for this request."
+I was listening in on a meeting recently and one of my coworkers said, "Let me see if I can find a resource for this request."
 
-Was she talking about tracking down a PowerPoint presentation? Nope. Was she talking about identifying a server for an application deployment? Nope. She was talking about identifying a person.
+Was she talking about tracking down a PowerPoint presentation? Nope. Was she talking about identifying a server for an application deployment? Nope. She was talking about identifying a person who was certified to present a workshop.
 
 Let me say this from the outset: **people aren't resources**.
 
@@ -52,11 +52,11 @@ These fictional representations of the commoditization of people also have beari
 
 This commoditization of people is especially prevalent within the technology industry. People are often referred to as resources and considered fungible assets. But let's consider how we view people in other industries.
 
-Do we really believe that one teacher is as good as any other teacher? Swap them out and you're good to go?
+Do we really believe that one teacher is as good as any other teacher? As long as they have a teaching certificate you can swap them out and you're good to go?
 
-Or one doctor is the same as any other doctor? Does it matter which heart surgeon you go to? They're all the same?
+Or one doctor is the same as any other doctor? Does it matter which heart surgeon you go to? As long as they have a medical degree they're all the same?
 
-Then why is this view of people as resources, that they can simply be swapped in and out, so prevalent within the technology and business industries? Why is it acceptable to treat one "Java developer" the same as any other "Java developer?"
+Then why is this view of people as resources, that they can simply be swapped in and out, so prevalent within the technology and business industries? Why is it acceptable to treat one "Java developer" the same as any other "Java developer?" Just because I know Java doesn't mean that we have the same experience in working on a team or mentoring other developers. Technologists are not one-dimensional "resources."
 
 This reduction of people, especially technologists, into fungible commodities devalues them. All people bring desires, likes and dislikes, motivations, talents and skills, experiences, and creativity with them as they approach any aspect of their work.
 
