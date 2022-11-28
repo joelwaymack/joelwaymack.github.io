@@ -5,11 +5,18 @@ categories:
 tags:
   - Management
   - Leadership
+toc: true
+toc_label: "People aren't Resources"
+toc_sticky: true
 ---
 
 I was listening in on a meeting recently and one of my coworkers said, "Let me see if I can find a resource for this request."
 
-Was she talking about tracking down a PowerPoint presentation? Nope. Was she talking about identifying a server for an application deployment? Nope. She was talking about identifying a person who was certified to present a workshop.
+Was she talking about tracking down a PowerPoint presentation? Nope.
+
+Was she talking about identifying a server for an application deployment? Nope.
+
+She was talking about identifying a person who was certified to present a workshop.
 
 Let me say this from the outset: **people aren't resources**.
 
@@ -17,7 +24,7 @@ Let me say this from the outset: **people aren't resources**.
 
 Let's start off with a simple premise: **words matter**.
 
-I don't want to jump too far down the rabbit hole of [communication theory](https://en.wikipedia.org/wiki/Communication_theory), but the words we use to communicate ideas are a set of shared symbols. These symbols require a common understanding or definition to make communication effective.
+We won't jump too far down the rabbit hole of [communication theory](https://en.wikipedia.org/wiki/Communication_theory), but the words we use to communicate ideas are a set of shared symbols. These symbols require a common understanding or definition to make communication effective.
 
 For example, when I talk to you about a "dog" I recently saw, we both have a shared understanding that the word "dog" refers to a 4 legged, furry canine. Our shared understanding of the word "dog" allows accurate communication to occur.
 

@@ -31,7 +31,6 @@ remote_theme: mmistakes/minimal-mistakes
 permalink: /:title/
 paginate: 5 # amount of posts to show
 paginate_path: /page:num/
-timezone: # https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 
 include:
   - _pages
@@ -60,7 +59,7 @@ plugins:
 author:
   name   : "Joel Waymack"
   avatar : "/assets/images/bio-photo.jpg"
-  bio    : "I am a cloud solution architect and software developer that loves helping others use technology effectively."
+  bio    : "I am a cloud solution architect and software development leader."
   location : "St. Louis, MO"
   links:
     - label: "GitHub"
