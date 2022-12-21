@@ -165,7 +165,7 @@ dist
 
 ## Nginx Setup
 
-The Nginx server will need some special setup if it is to host our app with [deep-linking](https://en.wikipedia.org/wiki/Deep_linking) enabled. If we don't include this setup, if anyone navigates to https://app.com/a-route the Nginx server won't be able to find an asset called "a-route" and will return a 404 Not Found error.
+The Nginx server will need some special setup if it is to host our app with [deep-linking](https://en.wikipedia.org/wiki/Deep_linking) enabled. If we don't include this setup, if anyone navigates to <https://app.com/a-route> the Nginx server won't be able to find an asset called "a-route" and will return a 404 Not Found error.
 
 The specific Nginx configuration file is saved in our app's top-level directory and is copied into the correct place when the hosting container is created.
 
