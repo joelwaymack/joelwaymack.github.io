@@ -8,6 +8,8 @@ tags:
 toc: true
 toc_label: "Hosting Azure Functions"
 toc_sticky: true
+header:
+  image: /assets/images/azure_functions/header.png
 ---
 
 In the previous posts, we looked at [the basics of Azure Functions](https://waymack.net/azure-functions-part-1-the-basics), [building Azure Functions Web APIs](https://waymack.net/azure-functions-part-2-developing-web-apis), and [building an Azure Functions processing pipeline](https://waymack.net/azure-functions-part-3-building-a-processing-pipeline). In this post, we are going look at deploying our solution to Azure and hosting it as a production system.
