@@ -10,6 +10,8 @@ tags:
 toc: true
 toc_label: "Containerizing an Angular App"
 toc_sticky: true
+header:
+  image: /assets/images/containerizing_angular/header.png
 ---
 
 
