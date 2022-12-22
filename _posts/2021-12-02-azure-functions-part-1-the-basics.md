@@ -10,6 +10,7 @@ toc_label: "Function App Basics"
 toc_sticky: true
 header:
   image: /assets/images/azure_functions/header.png
+  teaser: /assets/images/azure_functions/header.png
 ---
 
 If you have spent any time in the cloud computing world, you have probably heard of various "as a Service" offerings. Infrastruture as a Service (IaaS), Platform as a Service (PaaS), Database as a Service (DbaaS), Software as a Service (SaaS), Functions as a Service (FaaS), etc. Each of these offerings provide different benefits and are useful in certain situations.

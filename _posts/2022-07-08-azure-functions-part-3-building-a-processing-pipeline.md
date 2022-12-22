@@ -10,6 +10,7 @@ toc_label: "Function App Processing Pipeline"
 toc_sticky: true
 header:
   image: /assets/images/azure_functions/header.png
+  teaser: /assets/images/azure_functions/header.png
 ---
 
 In the previous posts, we looked at [the basics of Azure Functions](https://waymack.net/azure-functions-part-1-the-basics) and [building Azure Functions Web APIs](https://waymack.net/azure-functions-part-2-developing-web-apis). In this post, we are going build out the rest of the subscription processing pipeline that we outlined in part 2.

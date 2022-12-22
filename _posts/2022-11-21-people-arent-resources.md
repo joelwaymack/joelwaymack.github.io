@@ -10,6 +10,7 @@ toc_label: "People aren't Resources"
 toc_sticky: true
 header:
   image: /assets/images/people_resources/header.jpg
+  teaser: /assets/images/people_resources/header.jpg
 ---
 
 I was listening in on a meeting recently and one of my coworkers said, "Let me see if I can find a resource for this request."
