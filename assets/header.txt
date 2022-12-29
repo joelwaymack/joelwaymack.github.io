@@ -1,0 +1,1 @@
+Headers should be sized to 1280 x 250px
