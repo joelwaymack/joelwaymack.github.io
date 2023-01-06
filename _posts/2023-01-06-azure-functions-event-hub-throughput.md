@@ -10,8 +10,8 @@ toc: true
 toc_label: "Functions and Event Hubs"
 toc_sticky: true
 header:
-  image: /assets/images/azure_functions/functions_eh.png
-  teaser: /assets/images/azure_functions/functions_eh.png
+  image: /assets/images/functions_eh_throughput/header.png
+  teaser: /assets/images/functions_eh_throughput/header.png
 ---
 
 Real-time event processing is integral to how companies operate. From inventory updates when shipments arrive at a store to table availability when reservations are made a restaurant, every business operates off of a series of events. When we model solutions to fit business needs, event processing is an inevitable part of those solutions.
