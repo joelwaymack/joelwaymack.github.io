@@ -75,7 +75,7 @@ For more complex jobs, I generally recommend using a series of queues, one for e
 
 ### Stateful Job Pattern
 
-The stateful job pattern is a bit more complex and requires and additional technology: Durable Functions. Durable Functions use Azure Storage Queues and Azure Storage Tables to track the state of a workflow orchestration through various steps. I generally shy away from them, when possible, because there is an additional learning curve for teams that are new to Azure Functions but they are a powerful tool.
+The stateful job pattern is a bit more complex and requires an additional technology framework: Durable Functions. Durable Functions use Azure Storage Queues and Azure Storage Tables to track the state of a workflow orchestration through various steps. I generally shy away from them, when possible, because there is an additional learning curve for teams that are new to Azure Functions but they are a powerful tool.
 
 Durable Functions with a timer triggered orchestration is a great way to handle many scenarios, like the restaurant aggregation scenario I mentioned. In that scenario, a Timer Triggered Function would invoke a Durable Function Orchestrator to start the job workflow. The orchestrator would then call each activity Function for each step in the process. So we could fan out and calculate the inventory used for each receipt, then have an activity (fan in) that used the calculated results to aggregate the needed inventory replenishment, then another activity to send the order out to the vendor. (Once again, chaining activities and fan out/fan in operations are not unique to scheduled jobs, they're simply common scenarios).
 
