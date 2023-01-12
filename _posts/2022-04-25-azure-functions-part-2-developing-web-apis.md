@@ -286,6 +286,6 @@ Notice we have an input and and output Cosmos DB binding. So we retrieve the rec
 
 ## Wrap up
 
-We now have a fully functioning API built with Azure Functions. The input and output bindings make it incredibly simple to build a RESTful-ish API when we use Cosmos DB. In the next part we'll build out the processing pipeline.
+We now have a fully functioning API built with Azure Functions. The input and output bindings make it incredibly simple to build a RESTful-ish API when we use Cosmos DB. Jump into the next post in this series, [Building a Processing Pipeline](https://waymack.net/azure-functions-part-3-building-a-processing-pipeline/), to learn more!
 
 The complete code can be found at <https://github.com/joelwaymack/subscription-processing-functions-csharp>.

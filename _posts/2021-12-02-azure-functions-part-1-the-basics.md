@@ -89,4 +89,4 @@ With a timer trigger, you can execute a function at a specific time of day or on
 
 ## What's Next
 
-Let me say that I love Azure Functions. They're powerful, flexible, and they accelerate development for teams that use them. In subsequent posts, we'll dive into function development, function hosting models, and other concerns around functions.
+Let me say that I love Azure Functions. They're powerful, flexible, and they accelerate development for teams that use them. Check out the next post in this series, [Developing Web APIs](https://waymack.net/azure-functions-part-2-developing-web-apis/), to learn more!
