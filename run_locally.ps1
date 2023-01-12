@@ -1,0 +1,2 @@
+# https://jekyllrb.com/docs/#:~:text=Instructions%201%20Install%20all%20prerequisites.%202%20Install%20the,bundle%20exec%20jekyll%20serve%206%20Browse%20to%20http%3A%2F%2Flocalhost%3A4000
+bundle exec jekyll serve
