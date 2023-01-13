@@ -1,1 +1,1 @@
-Headers should be sized to 1280 x 250px
+Headers should be sized to 1920 x 400px 72ppi
