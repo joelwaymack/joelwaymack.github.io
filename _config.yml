@@ -23,6 +23,7 @@ twitter_username: joelwaymack
 github_username: joelwaymack
 minimal_mistakes_skin: dark
 search: true
+repository: "joelwaymack/joelwaymack.github.io"
 
 # Build settings
 markdown: kramdown
