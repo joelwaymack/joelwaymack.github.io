@@ -1,1 +1,2 @@
 Headers should be sized to 1920 x 400px 72ppi
+-100 brightness, +20 contrast
