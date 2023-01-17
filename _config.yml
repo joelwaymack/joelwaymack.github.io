@@ -59,7 +59,7 @@ plugins:
 author:
   name   : "Joel Waymack"
   avatar : "/assets/images/bio-photo.jpg"
-  bio    : "I am a cloud solution architect and software development leader."
+  bio    : "A cloud solution architect, software development leader, husband, father, and fitness enthusiast."
   location : "St. Louis, MO"
   links:
     - label: "GitHub"
@@ -112,7 +112,12 @@ analytics:
   provider: "custom"
 
 comments:
-  provider: "facebook"
-  facebook:
-    appid: 536108537902839
+  provider: "giscus"
+  giscus:
+    repo_id              : "MDEwOlJlcG9zaXRvcnkzNjkxOTUzMzk="
+    category_name        : "Announcements"
+    category_id          : "DIC_kwDOFgF5S84CTpWz"
+    discussion_term      : "og:title"
+    reactions_enabled    : "1"
+    theme                : "dark"
     
