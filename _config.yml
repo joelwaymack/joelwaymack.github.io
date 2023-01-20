@@ -60,7 +60,7 @@ plugins:
 author:
   name   : "Joel Waymack"
   avatar : "/assets/images/bio-photo.jpg"
-  bio    : "A cloud solution architect, software development leader, husband, father, and fitness enthusiast."
+  bio    : "A cloud solution architect, software development leader, and technology enthusiast."
   location : "St. Louis, MO"
   links:
     - label: "GitHub"
