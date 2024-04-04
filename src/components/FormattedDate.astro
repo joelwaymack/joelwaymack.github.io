@@ -1,0 +1,18 @@
+---
+interface Props {
+  date: Date;
+}
+
+const { date } = Astro.props;
+const displayDate = new Date(date.getTime() + date.getTimezoneOffset() * 60000);
+---
+
+<time datetime={displayDate.toISOString()}>
+  {
+    displayDate.toLocaleDateString("en-us", {
+      year: "numeric",
+      month: "short",
+      day: "numeric",
+    })
+  }
+</time>
