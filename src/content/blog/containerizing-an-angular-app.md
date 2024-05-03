@@ -19,7 +19,7 @@ You can find a number of guides out there that walk you through containerizing a
 
 This guide references an [example Angular App](https://github.com/joelwaymack/angular-docker-example) but the guidelines could be used for almost any SPA library or framework.
 
-# SPA Considerations
+## SPA Considerations
 
 For those of you who haven't used it before, Angular is a SPA framework that allows you to create a client-side Typescript application. That means it is HTML, CSS, and JavaScript bundled together that runs in a browser as an application.
 
@@ -27,7 +27,7 @@ For those of you who haven't used it before, Angular is a SPA framework that all
 
 While you could take these assets and deploy them to [Azure Storage as a Static Website](https://learn.microsoft.com/en-us/azure/storage/blobs/storage-blob-static-website) or [AWS S3 as a website](https://docs.aws.amazon.com/AmazonS3/latest/userguide//WebsiteHosting.html), I like containerizing my apps so I have a consistent deployment target like [Azure Container Apps](https://learn.microsoft.com/en-us/azure/container-apps/overview) or a Kubernetes implementation like [AKS](https://learn.microsoft.com/en-us/azure/aks/intro-kubernetes). That way my APIs, event-processing apps, and front-end apps are all hosted in the same environment.
 
-# The Environment Problem
+## The Environment Problem
 
 Almost all software development projects have a set of [deployment environments](https://en.wikipedia.org/wiki/Deployment_environment) that represent various levels of testing and usage. As a software build is verified in each deployment environment, it is promoted to the next deployment environment for a higher level of testing until it reaches the "production environment" where the software is utilized by actual end-users or real systems.
 
@@ -41,11 +41,11 @@ Some teams create a config.json file on their web server that their SPA app retr
 
 My proposal is to utilize the environment variables injected into the hosting container of our application and copy them over to the index.html file on container startup. That way our configuration values can change dynamically based on container hosting and we don't have extra latency when the application starts up in an end-user's browser.
 
-# Angular App Setup
+## Angular App Setup
 
 To make this happen, we'll need to set up our Angular app to retrieve and use these configuration values.
 
-## Angular Config Service
+### Angular Config Service
 
 The first step is creating a config [service](https://angular.io/guide/creating-injectable-service) that will provide our dynamic configuration values to the rest of the app. This service will pull values that have a certain prefix from the global [window object](https://www.w3schools.com/jsref/obj_window.asp), in our case the prefix will be **APP_ENV_VAR_**, and create an object to hold them. Specific config values that we want to provide to our app can also be defined as explicit [getters](https://www.typescriptlang.org/docs/handbook/2/classes.html#getters--setters) in our service to make them easier to retrieve.
 
@@ -86,7 +86,7 @@ export class ConfigService {
 }
 ```
 
-## Index.html
+### Index.html
 
 Our index.html file will need to have an explicit script section defined where the window object config values will be set. This section will be overwritten during container startup to provide our dynamic environment variables.
 
@@ -110,11 +110,11 @@ Our index.html file will need to have an explicit script section defined where t
 </html>
 ```
 
-# Containerizing Angular
+## Containerizing Angular
 
 With a little trickery, we can mimic host environment variable settings in the containerized Angular app. To do this, we'll need to set up containerization for our app.
 
-## Modify the Build Output Folder
+### Modify the Build Output Folder
 
 Most SPA libraries and frameworks have some sort of build tooling associated with them. In Angular, this is the Angular CLI which transpiles the TypeScript into JavaScript, converts the SCSS to CSS, and then bundles the HTML, CSS, and JavaScript together throwing everything into a "dist/{project_name}" folder.
 
@@ -135,7 +135,7 @@ I generally recommend changing the angular.json file that describes the Angular 
 }
 ```
 
-## Add a Dockerfile
+### Add a Dockerfile
 
 The next thing to do in creating a container is to add a Dockerfile to the app in the top-level directory. The example below uses a node:alpine base image for building the app and then it copies the bundled assets into an nginx:alpine image for serving the app. Nginx is a popular web server used to host static websites.
 
@@ -163,7 +163,7 @@ node_modules
 dist
 ```
 
-## Nginx Setup
+### Nginx Setup
 
 The Nginx server will need some special setup if it is to host our app with [deep-linking](https://en.wikipedia.org/wiki/Deep_linking) enabled. If we don't include this setup, if anyone navigates to <https://app.com/a-route> the Nginx server won't be able to find an asset called "a-route" and will return a 404 Not Found error.
 
@@ -181,7 +181,7 @@ server {
 }
 ```
 
-## Startup Script
+### Startup Script
 
 The magic for our setup really comes from the startup.sh file. This script runs when the hosting container starts and performs a number of important tasks.
 
@@ -208,7 +208,7 @@ nginx -g 'daemon off;'
 
 This script grabs all of the environment variables in the container that have a specific prefix, APP_ENV_VAR. It then looks in a specific script tag, id="APP_ENV_VAR", in our app's index.html file and either writes or replaces the values as global variables attached to the JavaScript window object. Lastly, it kicks off the nginx server.
 
-## Building and Running the Container Locally
+### Building and Running the Container Locally
 
 We can use the following commands to build, run, and test the container locally as long as [Docker Desktop](https://www.docker.com/products/docker-desktop/) is running and we're in our app's top-level directory.
 
@@ -219,6 +219,6 @@ docker run -e "APP_ENV_VAR_apiUrl=https://swapi.dev/api/starships/2" -e "APP_ENV
 
 Navigating to <http://localhost:8080> will then bring up the app. You should see the dynamic config values that we set when we started the app.
 
-# Conclusion
+## Conclusion
 
 That's it. A containerized Angular app with dynamic config values set based on the deployment environment. Here is the full [example Angular App](https://github.com/joelwaymack/angular-docker-example) if you're interested. Hopefully this trick can help you in the future.

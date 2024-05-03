@@ -20,7 +20,7 @@ She was talking about identifying a person who was certified to present a worksh
 
 Let me say this from the outset: **people aren't resources**.
 
-# Effective Communication
+## Effective Communication
 
 Let's start off with a simple premise: **words matter**.
 
@@ -37,7 +37,7 @@ Hopefully it makes sense that words matter. When I use a word, I want to choose 
 
 This shared understanding is crucial when we discuss that **people aren't resources**.
 
-# What is a Resource
+## What is a Resource
 
 Let's start off by talking about what a "resource" is. When I think of a resource, my mind is immediately drawn to the board game [Catan](https://en.wikipedia.org/wiki/Catan). In that game you use resources (sheep, wood, bricks, ore, and wheat) to build improvements and gain victory points. In this game, a resource is a commodity that can easily be traded or swapped out.
 
@@ -45,7 +45,7 @@ Beyond games, when I think of resources, I think of money, time, computers, real
 
 Dictionary.com defines a resource as "a source of supply, support, or aid, especially one that can be readily drawn upon when needed." So maybe people could be resources to provide support or aid from a knowledge or experience point-of-view, but I'm not completely on-board with that argument for a number of reasons.
 
-# Commoditizing People
+## Commoditizing People
 
 The primary reason **people aren't resources** is that, in referring to a person as a resource, you're equating a person to a commodity.
 
@@ -55,7 +55,7 @@ Or think of the Marvel movie [Eternals](https://en.wikipedia.org/wiki/Eternals_(
 
 These fictional representations of the commoditization of people also have bearing on the real-world way many people in management or planning positions see those they work with.
 
-# Technology and Business
+## Technology and Business
 
 This commoditization of people is especially prevalent within the technology industry. People are often referred to as resources and considered fungible assets. But let's consider how we view people in other industries.
 
@@ -67,7 +67,7 @@ Then why is this view of people as resources, that they can simply be swapped in
 
 This reduction of people, especially technologists, into fungible commodities devalues them. All people bring desires, likes and dislikes, motivations, talents and skills, experiences, and creativity with them as they approach any aspect of their work.
 
-# Using Better Words
+## Using Better Words
 
 Let's agree that referring to people as resources dehumanizes them.
 
