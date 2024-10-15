@@ -1,0 +1,42 @@
+---
+import Layout from "../layouts/Page.astro";
+
+const years = (pastDate: Date) => {
+  const ageDifMs = Date.now() - pastDate.getTime();
+  const ageDate = new Date(ageDifMs);
+  return Math.abs(ageDate.getUTCFullYear() - 1970);
+};
+---
+
+<Layout
+  title="About Me"
+  description="Lorem ipsum dolor sit amet"
+  pubDate={new Date("August 08 2021")}
+  heroImage="/images/family.jpg"
+>
+  <p>
+    I currently work at Microsoft helping developers build solutions on Azure.
+    While I love technology, I love enabling others to be successful even more.
+    To that end, I spend a lot of time mentoring others and focusing on
+    leadership skills.
+  </p>
+
+  <p>
+    Beyond my job and technology, I love spending time with my family. My wife,
+    Laura, and I have been married for {years(new Date("2017-10-08"))} years and
+    we have three kids: Lily({years(new Date("2018-11-13"))}), Kenzie({
+      years(new Date("2021-02-04"))
+    }), and Hunter({years(new Date("2022-08-17"))}).
+  </p>
+
+  <p>
+    I'm also fairly involved in my local church where I serve as a lay non-paid
+    pastor. I love teaching and helping others grow in their faith.
+  </p>
+
+  <p>
+    I enjoy lifting weights and staying active. You can often find me in the gym
+    or out for a run. I also enjoy playing video games, watching movies, reading
+    books, and savoring a good glass of scotch.
+  </p>
+</Layout>

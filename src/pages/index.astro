@@ -1,0 +1,57 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
+import LatestPosts from "../components/LatestPosts.astro";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead
+      title={SITE_TITLE}
+      description={SITE_DESCRIPTION}
+      image="/images/me.jpg"
+    />
+    <style>
+      .me {
+        border-radius: 9999px;
+        width: 10rem;
+        height: 10rem;
+        margin-bottom: 1rem;
+      }
+      @media (min-width: 768px) {
+        .me {
+          width: 15rem;
+          height: 15rem;
+          margin-bottom: 4rem;
+        }
+      }
+      .img-container {
+        display: flex;
+        justify-content: center;
+      }
+    </style>
+  </head>
+  <body>
+    <Header />
+    <main>
+      <div class="img-container">
+        <img class="me" src="/images/me.jpg" alt="Joel" />
+      </div>
+      <h1>Welcome to {SITE_TITLE}</h1>
+      <section>
+        <p>
+          Hi, I'm Joel. I'm a software engineer, cloud solutions architect, and
+          technology leader. <span class="bold">But don't let me fool you.</span
+          >
+          Most of what I know comes from my mistakes more than my successes. Hopefully
+          what I capture here can be helpful for you too.
+        </p>
+      </section>
+      <LatestPosts />
+    </main>
+    <Footer />
+  </body>
+</html>
