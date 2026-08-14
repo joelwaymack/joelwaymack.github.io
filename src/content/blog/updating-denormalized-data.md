@@ -10,6 +10,7 @@ tags:
   - Azure Cosmos DB
   - Azure Durable Functions
 heroImage: /images/denormalized_updates/header.png
+linkedinShared: true
 ---
 
 As I've continued to progress in my career, I've found that I choose [relational databases](https://en.wikipedia.org/wiki/Relational_database) less and less for my projects because I like controlling the shape of my data through code instead of through database schemas. This generally means I choose a non-relational, non-schema-specific database (generally a [document database](https://en.wikipedia.org/wiki/Document-oriented_database)) for most of my projects. One challenge I run into on a regular basis is how to update [denormalized](https://en.wikipedia.org/wiki/Denormalization) data in my document database as canonical documents are updated.
@@ -24,7 +25,7 @@ Most developers are familiar with relational databases and [normalized data](htt
 
 ![Normalized Entity Relationship Diagram](/images/denormalized_updates/relational-erd.png)
 
-In a non-relational document database, we generally structure the documents in a denormalized fashion to allow for expensive writes but efficient reads. In this type of situation, we might add the customer's name to the order document making it easier to display important order information through the retrieval of a single document. In this scenario, the customer's name is a denormalized data element since it is spread across multiple documents. We generally refer to the customer document as the canonical source of truth from which the denormalized data is derived. (If you want to read more about modeling data in a non-relational database, check out [this article](https://learn.microsoft.com/en-us/azure/cosmos-db/nosql/modeling-data).) 
+In a non-relational document database, we generally structure the documents in a denormalized fashion to allow for expensive writes but efficient reads. In this type of situation, we might add the customer's name to the order document making it easier to display important order information through the retrieval of a single document. In this scenario, the customer's name is a denormalized data element since it is spread across multiple documents. We generally refer to the customer document as the canonical source of truth from which the denormalized data is derived. (If you want to read more about modeling data in a non-relational database, check out [this article](https://learn.microsoft.com/en-us/azure/cosmos-db/nosql/modeling-data).)
 
 ![Normalized Entity Relationship Diagram](/images/denormalized_updates/denormalized-erd.png)
 
@@ -100,7 +101,7 @@ public async Task UpdateCustomerDenormalizedData([OrchestrationTrigger] TaskOrch
 
 ### Retrieving Orders Activity
 
-The *GetOrdersToUpdate* Activity Function queries Cosmos for all of the order documents that have a customer Id matching the updated customer document and returns a list of those orders.
+The _GetOrdersToUpdate_ Activity Function queries Cosmos for all of the order documents that have a customer Id matching the updated customer document and returns a list of those orders.
 
 ```csharp
 [Function("GetOrdersToUpdate")]

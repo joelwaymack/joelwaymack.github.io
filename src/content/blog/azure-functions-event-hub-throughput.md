@@ -1,7 +1,7 @@
 ---
 title: Azure Functions and Event Hub Throughput
 description: Processing a high throughput of events with Java Azure Functions and Azure Event Hubs
-pubDate: '2023-01-06'
+pubDate: "2023-01-06"
 categories:
   - Tech
 tags:
@@ -9,6 +9,7 @@ tags:
   - Azure Functions
   - Azure Event Hubs
 heroImage: /images/functions_eh_throughput/header.png
+linkedinShared: true
 ---
 
 Real-time event processing is integral to how companies operate. From inventory updates when shipments arrive at a store to table availability when reservations are made a restaurant, every business operates off of a series of events. When we model solutions to fit business needs, event processing is an inevitable part of those solutions.
@@ -90,7 +91,7 @@ The consuming Function App instances fluctuate but generally sit at about 23 ins
 ![consumer instances](/images/functions_eh_throughput/consumer_instances.png)
 
 ```kusto
-FunctionAppLogs 
+FunctionAppLogs
 | where TimeGenerated > ago(10m)
 | where FunctionName == 'ConsumeEvents'
 | summarize ['instances'] = dcount(HostInstanceId) by bin(TimeGenerated, 30s)
@@ -137,7 +138,7 @@ While we aren't very concerned about the producer instances, they obviously cont
 ![producer instances](/images/functions_eh_throughput/producer_instances.png)
 
 ```kusto
-FunctionAppLogs 
+FunctionAppLogs
 | where TimeGenerated > ago(10m)
 | where FunctionName == 'ProduceEventBatch'
 | summarize ['instances'] = dcount(HostInstanceId) by bin(TimeGenerated, 30s)

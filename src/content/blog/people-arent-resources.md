@@ -8,6 +8,7 @@ tags:
   - Management
   - Leadership
 heroImage: /images/people_resources/header.jpg
+linkedinShared: true
 ---
 
 I was listening in on a meeting recently and one of my coworkers said, "Let me see if I can find a resource for this request."
@@ -33,7 +34,7 @@ If I said "I recently saw a dog" but start talking to you about the short, 10lb 
 Hopefully it makes sense that words matter. When I use a word, I want to choose the best word within our shared symbol set so that I clearly communicate my intent and ideas in a way that you understand.
 
 > "Good words are worth much, and cost little."
-—George Herbert
+> —George Herbert
 
 This shared understanding is crucial when we discuss that **people aren't resources**.
 
@@ -51,7 +52,7 @@ The primary reason **people aren't resources** is that, in referring to a person
 
 I'm reminded of the movie [Jupiter Ascending](https://en.wikipedia.org/wiki/Jupiter_Ascending) (it's pretty bad, no need to watch it). In this movie, humans are "seeded" onto planets so they can grow in population and eventually be harvested to create "youth serum." Over and over again the entire population of earth is seen as little more than a commodity to be harvested and used. They're cattle. They're resources.
 
-Or think of the Marvel movie [Eternals](https://en.wikipedia.org/wiki/Eternals_(film)) (definitely a better watch). In it, humans are "seeded" onto planets so that a large enough intelligent population can evolve to allow a new Celestial to be born (and destroy the world and human population in the process). Once again, people are cattle. Once again, people are resources.
+Or think of the Marvel movie [Eternals](<https://en.wikipedia.org/wiki/Eternals_(film)>) (definitely a better watch). In it, humans are "seeded" onto planets so that a large enough intelligent population can evolve to allow a new Celestial to be born (and destroy the world and human population in the process). Once again, people are cattle. Once again, people are resources.
 
 These fictional representations of the commoditization of people also have bearing on the real-world way many people in management or planning positions see those they work with.
 
@@ -72,16 +73,16 @@ This reduction of people, especially technologists, into fungible commodities de
 Let's agree that referring to people as resources dehumanizes them.
 
 > "Words are potent weapons for all causes, good or bad."
-—Manly Hall
+> —Manly Hall
 
 The next time you're tempted to refer to someone as a resource, try to pick a different word. Here are a few of my favorites:
 
-* Coworker
-* Developer (or whatever their role is)
-* Teammate
-* Someone
-* A person
-* Talent
+- Coworker
+- Developer (or whatever their role is)
+- Teammate
+- Someone
+- A person
+- Talent
 
 I've found that in making the conscious effort to refer to the people I lead not as resources but as people, my empathy and relationships have improved dramatically.
 

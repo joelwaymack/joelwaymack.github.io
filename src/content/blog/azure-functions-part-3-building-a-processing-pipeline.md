@@ -8,6 +8,7 @@ tags:
   - Azure Functions
   - Azure
 heroImage: /images/azure_functions/header.png
+linkedinShared: true
 ---
 
 In the previous posts, we looked at [the basics of Azure Functions](https://waymack.net/azure-functions-part-1-the-basics) and [building Azure Functions Web APIs](https://waymack.net/azure-functions-part-2-developing-web-apis). In this post, we are going build out the rest of the subscription processing pipeline that we outlined in part 2.

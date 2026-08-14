@@ -9,6 +9,7 @@ tags:
   - Azure Functions
   - Azure Durable Functions
 heroImage: /images/scheduled_job/header.jpg
+linkedinShared: true
 ---
 
 As teams move legacy systems out to Azure, or build new systems in Azure, a common processing scenario often arises: running a scheduled job. In this post we'll look at two ways to architect a resilient, scheduled processing pipeline using [Azure Functions](https://learn.microsoft.com/en-us/azure/azure-functions/functions-overview).

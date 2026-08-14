@@ -8,6 +8,7 @@ tags:
   - Azure Functions
   - Azure
 heroImage: /images/azure_functions/header.png
+linkedinShared: true
 ---
 
 In the previous post, we looked at [the basics of Azure Functions](https://waymack.net/azure-functions-part-1-the-basics). In this post, we are going to jump in and create a Function App with web API endpoints. The entire Function App can be found at <https://github.com/joelwaymack/subscription-processing-functions-csharp>.
@@ -16,12 +17,12 @@ In the previous post, we looked at [the basics of Azure Functions](https://wayma
 
 There are multiple tooling options for building a Function App. To try and keep things as generic as possible for your desired operating system, editor, and language, I generally recommend the following tools:
 
-* [Visual Studio Code](https://code.visualstudio.com/) for code editing
-  * [Azure Extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack)
-  * [Rest Client Extension](https://marketplace.visualstudio.com/items?itemName=humao.rest-client)
-* [Azure Functions Core Tools](https://docs.microsoft.com/en-us/azure/azure-functions/functions-run-local) for CLI Functions setup
-* The [language specific SDK/Runtime](https://docs.microsoft.com/en-us/azure/azure-functions/supported-languages#languages-by-runtime-version) you want to use (I plan on using C# and .NET 6.0 for my Function App but you are more than welcome to use whatever you would like.)
-* The [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli) to set up resources in Azure
+- [Visual Studio Code](https://code.visualstudio.com/) for code editing
+  - [Azure Extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack)
+  - [Rest Client Extension](https://marketplace.visualstudio.com/items?itemName=humao.rest-client)
+- [Azure Functions Core Tools](https://docs.microsoft.com/en-us/azure/azure-functions/functions-run-local) for CLI Functions setup
+- The [language specific SDK/Runtime](https://docs.microsoft.com/en-us/azure/azure-functions/supported-languages#languages-by-runtime-version) you want to use (I plan on using C# and .NET 6.0 for my Function App but you are more than welcome to use whatever you would like.)
+- The [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli) to set up resources in Azure
 
 Sometimes you will need additional tools for local development depending on the triggers and bindings you want to use like the [Cosmos DB Emulator](https://docs.microsoft.com/en-us/azure/cosmos-db/local-emulator) for local DB development, [Azurite](https://github.com/Azure/Azurite) for local storage development, or [Storage Explorer](https://docs.microsoft.com/en-us/azure/vs-azure-tools-storage-manage-with-storage-explorer) to manipulate BLOBs in local storage. You can also stand up dependent resources for development directly in Azure. Many times, that's the easiest route.
 
@@ -33,9 +34,9 @@ I always recommend learning a new language or framework using a real-world scena
 
 For this post, we're going to focus on the web API portion of the solution which includes three HTTP triggered Functions and the Cosmos database for data persistence. These three Functions are:
 
-* CreateSubscription - Allows a customer to create a new product subscription (think about a Netflix subscription).
-* GetSubscriptions - Get all subscriptions for a customer.
-* DeleteSubscription - Remove a subscription from a customer with a [soft delete](https://en.wiktionary.org/wiki/soft_deletion).
+- CreateSubscription - Allows a customer to create a new product subscription (think about a Netflix subscription).
+- GetSubscriptions - Get all subscriptions for a customer.
+- DeleteSubscription - Remove a subscription from a customer with a [soft delete](https://en.wiktionary.org/wiki/soft_deletion).
 
 ## Generating a Function App
 
@@ -48,13 +49,13 @@ The first step in creating a Function App is to create a new directory and open 
 1. Select the Azure Extension in the left extension menu.
 1. Find the Functions section of the Extension and select the **Create New Project...** button (it looks like a folder with a tiny lightning bolt).
 1. VS Code will guide you through setting up the project. Here are my settings:
-    1. Folder: The current folder
-    1. Language: C#
-    1. Runtime: .NET 6
-    1. Template: HTTP trigger
-    1. Function name: CreateSubscription
-    1. Namespace: Company.Function
-    1. AccessRights: Anonymous
+   1. Folder: The current folder
+   1. Language: C#
+   1. Runtime: .NET 6
+   1. Template: HTTP trigger
+   1. Function name: CreateSubscription
+   1. Namespace: Company.Function
+   1. AccessRights: Anonymous
 
 At this point, our Function App project is set up. If you hit **F5**, it should start your Function App and you can navigate to **localhost:7071/api/CreateSubscription** to see the default code execute. It's simply an API endpoint that will accept a **name** query string parameter and send back a string.
 
@@ -86,20 +87,20 @@ public static async Task<IActionResult> Run(
 
 Here are a few things to note:
 
-* The **FunctionName** attribute defines what name the Function will have inside of the app. This is also how the Functions Host knows that this method is a Function within the app.
-* The method has two parameters. The first parameter defines the Function trigger through an **HttpTrigger** attribute. This definition tells the Functions Host to execute this Function when an HTTP request arrives with a verb of either **GET** or **POST** to the default route for this Function: **/api/CreateSubscription**. (Don't worry about the **AuthorizationLevel** at this point.)
-* The second parameter is the Functions logger that is using default logging categories for the Function App. Use this logger for any logging you want to do.
-* The **HttpRequest** parameter contains all the information for the request that triggered the Function execution such as query string parameters, the request body, headers, and so forth.
-* The default Function method is async so we can use [async/await semantics](https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/async/task-asynchronous-programming-model). You can always remove async and the Task return type to make it a synchronous method.
-* The return type for this Function is an **IActionResult**. This will define the HTTP response that gets sent back to the requestor. .NET has a number of built-in types for defining an HTTP response like the **OkObjectResult** that gets returned from this method.
-* If I wanted to add any input or output bindings, I would add them as method parameters. They would have an attribute that looks a lot like the trigger attribute for the first parameter.
+- The **FunctionName** attribute defines what name the Function will have inside of the app. This is also how the Functions Host knows that this method is a Function within the app.
+- The method has two parameters. The first parameter defines the Function trigger through an **HttpTrigger** attribute. This definition tells the Functions Host to execute this Function when an HTTP request arrives with a verb of either **GET** or **POST** to the default route for this Function: **/api/CreateSubscription**. (Don't worry about the **AuthorizationLevel** at this point.)
+- The second parameter is the Functions logger that is using default logging categories for the Function App. Use this logger for any logging you want to do.
+- The **HttpRequest** parameter contains all the information for the request that triggered the Function execution such as query string parameters, the request body, headers, and so forth.
+- The default Function method is async so we can use [async/await semantics](https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/async/task-asynchronous-programming-model). You can always remove async and the Task return type to make it a synchronous method.
+- The return type for this Function is an **IActionResult**. This will define the HTTP response that gets sent back to the requestor. .NET has a number of built-in types for defining an HTTP response like the **OkObjectResult** that gets returned from this method.
+- If I wanted to add any input or output bindings, I would add them as method parameters. They would have an attribute that looks a lot like the trigger attribute for the first parameter.
 
 ## Organizing a Function App
 
 The default project code isn't well organized, so I generally create a better directory model for building out my Function Apps. Almost all of my Function Apps have the following two directories:
 
-* Handlers - This directory contains all of the classes that hold my Function methods (like Controllers in MVC style apps). I generally create a 'Handler' class for each model/domain object, for a set of HTTP APIs, or the like. Handler is the common term in event-driven-processing for a method/function that 'handles' an event execution.
-* Models - This directory holds all of the domain models for my Function App.
+- Handlers - This directory contains all of the classes that hold my Function methods (like Controllers in MVC style apps). I generally create a 'Handler' class for each model/domain object, for a set of HTTP APIs, or the like. Handler is the common term in event-driven-processing for a method/function that 'handles' an event execution.
+- Models - This directory holds all of the domain models for my Function App.
 
 Sometimes I also add a [Startup.cs](https://docs.microsoft.com/en-us/azure/azure-functions/functions-dotnet-dependency-injection#register-services) file in the root project directory to include dependency injection or change serializer settings for my Function App. At this point in our solution, we don't need one.
 
@@ -149,11 +150,11 @@ We'll need a Cosmos DB to persist our data. To do this:
 
 1. Jump into the Azure Portal and create a Cosmos DB Account with the Core API. (you can use the Free Tier!)
 1. In **Cosmos DB Account > Data Explorer > New Container**
-    1. Database id: **Sales**
-    1. Database throughput: Manual
-    1. Required RU/s: 400
-    1. Container id: **Subscriptions**
-    1. Partition key: **/customerId**
+   1. Database id: **Sales**
+   1. Database throughput: Manual
+   1. Required RU/s: 400
+   1. Container id: **Subscriptions**
+   1. Partition key: **/customerId**
 1. Grab the connection string at **Cosmos DB Account > Settings > Keys > Primary Connection String** for the local settings.
 
 ### Local Settings

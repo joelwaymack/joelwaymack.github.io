@@ -10,6 +10,7 @@ tags:
   - JavaScript
   - Front-end
 heroImage: /images/svelte-5/header.jpg
+linkedinShared: true
 ---
 
 I've enjoyed working with [Svelte](https://svelte.dev/) as a Front-end framework for quite a while. While it's not as robust as Angular, or as popular as React, I've used it extensively on various projects and I've come to enjoy how simple and clean it is.

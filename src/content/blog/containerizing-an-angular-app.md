@@ -10,8 +10,8 @@ tags:
   - Angular
   - Container
 heroImage: /images/containerizing_angular/header.jpg
+linkedinShared: true
 ---
-
 
 I'm a pretty big fan of [Angular](https://angular.io/docs) and use it for most of my side projects. I'm also a big fan of containerization and I like to host my apps, no matter what they're written in, in docker containers.
 
@@ -47,13 +47,13 @@ To make this happen, we'll need to set up our Angular app to retrieve and use th
 
 ### Angular Config Service
 
-The first step is creating a config [service](https://angular.io/guide/creating-injectable-service) that will provide our dynamic configuration values to the rest of the app. This service will pull values that have a certain prefix from the global [window object](https://www.w3schools.com/jsref/obj_window.asp), in our case the prefix will be **APP_ENV_VAR_**, and create an object to hold them. Specific config values that we want to provide to our app can also be defined as explicit [getters](https://www.typescriptlang.org/docs/handbook/2/classes.html#getters--setters) in our service to make them easier to retrieve.
+The first step is creating a config [service](https://angular.io/guide/creating-injectable-service) that will provide our dynamic configuration values to the rest of the app. This service will pull values that have a certain prefix from the global [window object](https://www.w3schools.com/jsref/obj_window.asp), in our case the prefix will be **APP*ENV_VAR***, and create an object to hold them. Specific config values that we want to provide to our app can also be defined as explicit [getters](https://www.typescriptlang.org/docs/handbook/2/classes.html#getters--setters) in our service to make them easier to retrieve.
 
 ```typescript
-import { Injectable } from '@angular/core';
+import { Injectable } from "@angular/core";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root",
 })
 export class ConfigService {
   private _config = {};
@@ -63,20 +63,20 @@ export class ConfigService {
   }
 
   public get apiUrl(): string {
-    return this._config['apiUrl'];
+    return this._config["apiUrl"];
   }
 
   public get environment(): string {
-    return this._config['environment'];
+    return this._config["environment"];
   }
 
   constructor() {
-    const prefix = 'APP_ENV_VAR_';
+    const prefix = "APP_ENV_VAR_";
     Object.getOwnPropertyNames(<any>window)
-      .filter(prop => prop.startsWith(prefix))
-      .forEach(prop => {
-        const key = prop.replace(prefix, '');
-        this._config[key] = (<any>window)[prop]
+      .filter((prop) => prop.startsWith(prefix))
+      .forEach((prop) => {
+        const key = prop.replace(prefix, "");
+        this._config[key] = (<any>window)[prop];
       });
   }
 
@@ -93,20 +93,20 @@ Our index.html file will need to have an explicit script section defined where t
 ```html
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title>Angular Docker Example</title>
-  <base href="/">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
-  <script id="APP_ENV_VAR">
-    window.APP_ENV_VAR_environment = 'local';
-    window.APP_ENV_VAR_apiUrl = 'https://swapi.dev/api/people/1';
-  </script>
-</head>
-<body>
-  <app-root></app-root>
-</body>
+  <head>
+    <meta charset="utf-8" />
+    <title>Angular Docker Example</title>
+    <base href="/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <script id="APP_ENV_VAR">
+      window.APP_ENV_VAR_environment = "local";
+      window.APP_ENV_VAR_apiUrl = "https://swapi.dev/api/people/1";
+    </script>
+  </head>
+  <body>
+    <app-root></app-root>
+  </body>
 </html>
 ```
 
