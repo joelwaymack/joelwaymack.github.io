@@ -9,6 +9,7 @@ tags:
   - Azure
 heroImage: /images/azure_functions/header.png
 linkedinShared: true
+linkedinSummary: A real Azure Functions app often needs more than an API. In this post, I build a processing pipeline with timers, queues, and messaging so a simple workflow becomes a resilient application.
 ---
 
 In the previous posts, we looked at [the basics of Azure Functions](https://waymack.net/azure-functions-part-1-the-basics) and [building Azure Functions Web APIs](https://waymack.net/azure-functions-part-2-developing-web-apis). In this post, we are going build out the rest of the subscription processing pipeline that we outlined in part 2.

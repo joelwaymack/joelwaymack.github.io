@@ -11,6 +11,7 @@ tags:
   - Azure Durable Functions
 heroImage: /images/denormalized_updates/header.png
 linkedinShared: true
+linkedinSummary: Keeping denormalized data in sync is a common challenge in document databases. This post shows how Durable Functions can help coordinate background updates without overcomplicating the data model.
 ---
 
 As I've continued to progress in my career, I've found that I choose [relational databases](https://en.wikipedia.org/wiki/Relational_database) less and less for my projects because I like controlling the shape of my data through code instead of through database schemas. This generally means I choose a non-relational, non-schema-specific database (generally a [document database](https://en.wikipedia.org/wiki/Document-oriented_database)) for most of my projects. One challenge I run into on a regular basis is how to update [denormalized](https://en.wikipedia.org/wiki/Denormalization) data in my document database as canonical documents are updated.

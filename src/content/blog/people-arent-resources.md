@@ -9,6 +9,7 @@ tags:
   - Leadership
 heroImage: /images/people_resources/header.jpg
 linkedinShared: true
+linkedinSummary: Leadership and engineering teams are better when we treat people as people, not resources. This post reflects on why language matters and how better communication creates healthier teams.
 ---
 
 I was listening in on a meeting recently and one of my coworkers said, "Let me see if I can find a resource for this request."

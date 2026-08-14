@@ -9,6 +9,7 @@ tags:
   - Azure
 heroImage: /images/azure_functions/header.png
 linkedinShared: true
+linkedinSummary: Azure Functions makes it easy to build event-driven apps without managing servers. In this post, I cover the basics of triggers, bindings, and the core concepts behind a practical serverless workflow.
 ---
 
 If you have spent any time in the cloud computing world, you have probably heard of various "as a Service" offerings. Infrastruture as a Service (IaaS), Platform as a Service (PaaS), Database as a Service (DbaaS), Software as a Service (SaaS), Functions as a Service (FaaS), etc. Each of these offerings provide different benefits and are useful in certain situations.

@@ -10,6 +10,7 @@ tags:
   - Azure Event Hubs
 heroImage: /images/functions_eh_throughput/header.png
 linkedinShared: true
+linkedinSummary: High-throughput event processing is a real engineering challenge. This post explores how Azure Event Hubs and Azure Functions can handle large event streams while keeping the architecture practical and scalable.
 ---
 
 Real-time event processing is integral to how companies operate. From inventory updates when shipments arrive at a store to table availability when reservations are made a restaurant, every business operates off of a series of events. When we model solutions to fit business needs, event processing is an inevitable part of those solutions.

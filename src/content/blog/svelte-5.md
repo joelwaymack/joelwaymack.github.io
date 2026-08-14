@@ -11,6 +11,7 @@ tags:
   - Front-end
 heroImage: /images/svelte-5/header.jpg
 linkedinShared: true
+linkedinSummary: Svelte 5 brings meaningful improvements to how reactivity and component logic work. This review shares my early impressions of the new model and why it still feels approachable.
 ---
 
 I've enjoyed working with [Svelte](https://svelte.dev/) as a Front-end framework for quite a while. While it's not as robust as Angular, or as popular as React, I've used it extensively on various projects and I've come to enjoy how simple and clean it is.
