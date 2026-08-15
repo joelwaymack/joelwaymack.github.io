@@ -1,6 +1,6 @@
 import { promises as fs } from "node:fs";
 import path from "node:path";
-import { fileURLToPath } from "node:url";
+import { fileURLToPath, pathToFileURL } from "node:url";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -12,12 +12,9 @@ const isDryRun = ["1", "true", "yes"].includes(
 );
 const accessToken =
   process.env.LINKEDIN_ACCESS_TOKEN || (isDryRun ? "dry-run-token" : undefined);
-const configuredAuthorUrn =
-  process.env.LINKEDIN_AUTHOR_URN ||
-  process.env.LINKEDIN_PERSON_URN ||
-  (isDryRun ? "urn:li:person:123456" : undefined);
+const configuredAuthorUrn = "urn:li:member:263924833";
 
-function normalizeLinkedInAuthorUrn(rawValue) {
+export function normalizeLinkedInAuthorUrn(rawValue) {
   if (!rawValue) {
     return undefined;
   }
@@ -40,7 +37,7 @@ function normalizeLinkedInAuthorUrn(rawValue) {
   return value;
 }
 
-function isValidLinkedInAuthorUrn(value) {
+export function isValidLinkedInAuthorUrn(value) {
   return /^urn:li:(member:-?\d+|company:\d+)$/.test(String(value || ""));
 }
 
@@ -272,4 +269,9 @@ async function main() {
   console.log(`Marked ${nextPost.file} as linkedinShared: true.`);
 }
 
-await main();
+const isDirectScriptExecution =
+  process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href;
+
+if (isDirectScriptExecution) {
+  await main();
+}
