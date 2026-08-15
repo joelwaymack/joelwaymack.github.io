@@ -36,7 +36,9 @@ function normalizeLinkedInAuthorUrn(rawValue) {
 }
 
 function isValidLinkedInAuthorUrn(value) {
-  return /^urn:li:(member:-?\d+|company:\d+)$/.test(String(value || ""));
+  return /^urn:li:(member|person):[A-Za-z0-9_-]+$|^urn:li:company:[A-Za-z0-9_-]+$/.test(
+    String(value || ""),
+  );
 }
 
 const authorUrn = normalizeLinkedInAuthorUrn(configuredAuthorUrn);
@@ -240,7 +242,7 @@ async function main() {
 
   if (authorUrn && !isValidLinkedInAuthorUrn(authorUrn)) {
     throw new Error(
-      "Invalid LinkedIn author URN. Expected urn:li:member:<id> or urn:li:company:<id>. " +
+      "Invalid LinkedIn author URN. Expected urn:li:member:<id>, urn:li:person:<id>, or urn:li:company:<id>. " +
         "Set LINKEDIN_AUTHOR_URN accordingly. LINKEDIN_PERSON_URN is supported for backward compatibility.",
     );
   }

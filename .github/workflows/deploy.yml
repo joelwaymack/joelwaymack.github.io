@@ -44,6 +44,7 @@ jobs:
         env:
           SITE_URL: https://waymack.net
           LINKEDIN_ACCESS_TOKEN: ${{ secrets.LINKEDIN_ACCESS_TOKEN }}
+          LINKEDIN_AUTHOR_URN: ${{ secrets.LINKEDIN_AUTHOR_URN || secrets.LINKEDIN_PERSON_URN }}
           LINKEDIN_PERSON_URN: ${{ secrets.LINKEDIN_PERSON_URN }}
         run: node scripts/share-linkedin-post.mjs
 
