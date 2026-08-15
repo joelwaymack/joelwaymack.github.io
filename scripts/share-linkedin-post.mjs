@@ -27,15 +27,21 @@ function normalizeLinkedInAuthorUrn(rawValue) {
     return undefined;
   }
 
-  // LinkedIn UGC Post creation accepts person or organization URNs.
-  // Keep the original type, but normalize harmless casing/spacing.
+  // LinkedIn UGC author validation is stricter than the public docs suggest:
+  // the API accepts member/company URNs with numeric IDs, not person/organization.
+  if (/^urn:li:person:/i.test(value)) {
+    return value.replace(/^urn:li:person:/i, "urn:li:member:");
+  }
+
+  if (/^urn:li:organization:/i.test(value)) {
+    return value.replace(/^urn:li:organization:/i, "urn:li:company:");
+  }
+
   return value;
 }
 
 function isValidLinkedInAuthorUrn(value) {
-  return /^urn:li:(person|organization):[A-Za-z0-9_-]+$/.test(
-    String(value || ""),
-  );
+  return /^urn:li:(member:-?\d+|company:\d+)$/.test(String(value || ""));
 }
 
 const authorUrn = normalizeLinkedInAuthorUrn(configuredAuthorUrn);
@@ -239,8 +245,8 @@ async function main() {
 
   if (authorUrn && !isValidLinkedInAuthorUrn(authorUrn)) {
     throw new Error(
-      "Invalid LinkedIn author URN. Expected urn:li:person:<id> or urn:li:organization:<id>. " +
-        "Set LINKEDIN_AUTHOR_URN accordingly. LINKEDIN_PERSON_URN is supported for backward compatibility.",
+      "Invalid LinkedIn author URN. Expected urn:li:member:<numeric-id> or urn:li:company:<numeric-id>. " +
+        "If you have a person or organization URN, convert it to the numeric member/company form before posting.",
     );
   }
 
