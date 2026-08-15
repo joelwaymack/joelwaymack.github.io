@@ -10,7 +10,7 @@ tags:
   - Teamwork
   - Career Growth
 heroImage: /images/principles_leading_people/header.jpg
-linkedinSummary: "A practical framework for first-line leaders: set direction, grow people, and shape the environment so teams can do better work and build healthier culture."
+linkedinSummary: "Leadership isn’t about heroics. It’s about creating clarity, growing people, and shaping the environment where teams can do their best work. Here’s a practical framework for leaders who directly manage people."
 ---
 
 Leading people is a complex task.

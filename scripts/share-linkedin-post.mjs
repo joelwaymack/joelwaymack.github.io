@@ -12,9 +12,34 @@ const isDryRun = ["1", "true", "yes"].includes(
 );
 const accessToken =
   process.env.LINKEDIN_ACCESS_TOKEN || (isDryRun ? "dry-run-token" : undefined);
-const personUrn =
+const configuredAuthorUrn =
+  process.env.LINKEDIN_AUTHOR_URN ||
   process.env.LINKEDIN_PERSON_URN ||
-  (isDryRun ? "urn:li:person:dry-run" : undefined);
+  (isDryRun ? "urn:li:member:123456" : undefined);
+
+function normalizeLinkedInAuthorUrn(rawValue) {
+  if (!rawValue) {
+    return undefined;
+  }
+
+  const value = String(rawValue).trim();
+  if (!value) {
+    return undefined;
+  }
+
+  // Backward compatibility: older configs used urn:li:person:<id>.
+  if (/^urn:li:person:/i.test(value)) {
+    return value.replace(/^urn:li:person:/i, "urn:li:member:");
+  }
+
+  return value;
+}
+
+function isValidLinkedInAuthorUrn(value) {
+  return /^urn:li:(member:-?\d+|company:\d+)$/.test(String(value || ""));
+}
+
+const authorUrn = normalizeLinkedInAuthorUrn(configuredAuthorUrn);
 
 function parseFrontmatter(markdown) {
   const match = markdown.match(/^---\s*\n([\s\S]*?)\n---\s*\n?/);
@@ -140,7 +165,7 @@ async function readBlogPosts() {
 async function sharePostToLinkedIn(post) {
   const url = "https://api.linkedin.com/v2/ugcPosts";
   const payload = {
-    author: personUrn,
+    author: authorUrn,
     lifecycleState: "PUBLISHED",
     specificContent: {
       "com.linkedin.ugc.ShareContent": {
@@ -200,17 +225,24 @@ async function markPostAsShared(fullPath) {
 }
 
 async function main() {
-  if (!accessToken || !personUrn) {
+  if (!accessToken || !authorUrn) {
     if (isDryRun) {
       console.log(
         "Dry-run mode enabled; continuing without live LinkedIn credentials to preview the payload.",
       );
     } else {
       console.log(
-        "LinkedIn share skipped because LINKEDIN_ACCESS_TOKEN and LINKEDIN_PERSON_URN are not configured.",
+        "LinkedIn share skipped because LINKEDIN_ACCESS_TOKEN and LINKEDIN_AUTHOR_URN (or LINKEDIN_PERSON_URN) are not configured.",
       );
       return;
     }
+  }
+
+  if (authorUrn && !isValidLinkedInAuthorUrn(authorUrn)) {
+    throw new Error(
+      "Invalid LinkedIn author URN. Expected urn:li:member:<id> or urn:li:company:<id>. " +
+        "Set LINKEDIN_AUTHOR_URN accordingly. LINKEDIN_PERSON_URN is supported for backward compatibility.",
+    );
   }
 
   const posts = await readBlogPosts();
