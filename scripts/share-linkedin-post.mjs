@@ -12,7 +12,7 @@ const isDryRun = ["1", "true", "yes"].includes(
 );
 const accessToken =
   process.env.LINKEDIN_ACCESS_TOKEN || (isDryRun ? "dry-run-token" : undefined);
-const configuredAuthorUrn = "urn:li:member:263924833";
+const configuredAuthorUrn = "urn:li:person:263924833";
 
 export function normalizeLinkedInAuthorUrn(rawValue) {
   if (!rawValue) {
@@ -24,21 +24,23 @@ export function normalizeLinkedInAuthorUrn(rawValue) {
     return undefined;
   }
 
-  // LinkedIn UGC author validation is stricter than the public docs suggest:
-  // the API accepts member/company URNs with numeric IDs, not person/organization.
-  if (/^urn:li:person:/i.test(value)) {
-    return value.replace(/^urn:li:person:/i, "urn:li:member:");
+  // LinkedIn UGC posts are validated against the person/organization URN forms,
+  // even though page metadata sometimes exposes member/company values.
+  if (/^urn:li:member:/i.test(value)) {
+    return value.replace(/^urn:li:member:/i, "urn:li:person:");
   }
 
-  if (/^urn:li:organization:/i.test(value)) {
-    return value.replace(/^urn:li:organization:/i, "urn:li:company:");
+  if (/^urn:li:company:/i.test(value)) {
+    return value.replace(/^urn:li:company:/i, "urn:li:organization:");
   }
 
   return value;
 }
 
 export function isValidLinkedInAuthorUrn(value) {
-  return /^urn:li:(member:-?\d+|company:\d+)$/.test(String(value || ""));
+  return /^urn:li:(person:\d+|organization:\d+|member:\d+|company:\d+)$/.test(
+    String(value || ""),
+  );
 }
 
 const authorUrn = normalizeLinkedInAuthorUrn(configuredAuthorUrn);
