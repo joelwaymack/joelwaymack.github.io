@@ -15,7 +15,7 @@ const accessToken =
 const configuredAuthorUrn =
   process.env.LINKEDIN_AUTHOR_URN ||
   process.env.LINKEDIN_PERSON_URN ||
-  (isDryRun ? "urn:li:member:123456" : undefined);
+  (isDryRun ? "urn:li:person:123456" : undefined);
 
 function normalizeLinkedInAuthorUrn(rawValue) {
   if (!rawValue) {
@@ -27,16 +27,13 @@ function normalizeLinkedInAuthorUrn(rawValue) {
     return undefined;
   }
 
-  // Backward compatibility: older configs used urn:li:person:<id>.
-  if (/^urn:li:person:/i.test(value)) {
-    return value.replace(/^urn:li:person:/i, "urn:li:member:");
-  }
-
+  // LinkedIn UGC Post creation accepts person or organization URNs.
+  // Keep the original type, but normalize harmless casing/spacing.
   return value;
 }
 
 function isValidLinkedInAuthorUrn(value) {
-  return /^urn:li:(member|person):[A-Za-z0-9_-]+$|^urn:li:company:[A-Za-z0-9_-]+$/.test(
+  return /^urn:li:(person|organization):[A-Za-z0-9_-]+$/.test(
     String(value || ""),
   );
 }
@@ -242,7 +239,7 @@ async function main() {
 
   if (authorUrn && !isValidLinkedInAuthorUrn(authorUrn)) {
     throw new Error(
-      "Invalid LinkedIn author URN. Expected urn:li:member:<id>, urn:li:person:<id>, or urn:li:company:<id>. " +
+      "Invalid LinkedIn author URN. Expected urn:li:person:<id> or urn:li:organization:<id>. " +
         "Set LINKEDIN_AUTHOR_URN accordingly. LINKEDIN_PERSON_URN is supported for backward compatibility.",
     );
   }
