@@ -1,6 +1,6 @@
 ---
 title: Azure Functions Part 2 - Developing Web APIs
-description: How to develop web APIs using Azure Functions HTTP triggers
+description: Building APIs with Azure Functions is simpler than it looks when you combine HTTP triggers, bindings, and a clean serverless deployment model. This post walks through creating the foundations for a small web API in Azure.
 pubDate: 2022-04-25
 categories:
   - Tech
@@ -8,8 +8,6 @@ tags:
   - Azure Functions
   - Azure
 heroImage: /images/azure_functions/header.png
-linkedinShared: true
-linkedinSummary: Building APIs with Azure Functions is simpler than it looks when you combine HTTP triggers, bindings, and a clean serverless deployment model. This post walks through creating the foundations for a small web API in Azure.
 ---
 
 In the previous post, we looked at [the basics of Azure Functions](https://waymack.net/azure-functions-part-1-the-basics). In this post, we are going to jump in and create a Function App with web API endpoints. The entire Function App can be found at <https://github.com/joelwaymack/subscription-processing-functions-csharp>.

@@ -1,6 +1,6 @@
 ---
 title: Running Scheduled Jobs on Azure Functions
-description: Patterns for running scheduled jobs using Azure Functions
+description: Scheduled jobs are one of the most common patterns in cloud systems, and Azure Functions makes them easy to build reliably. This post looks at patterns for recurring processing and resilient job design.
 pubDate: 2023-01-12
 categories:
   - Tech
@@ -9,8 +9,6 @@ tags:
   - Azure Functions
   - Azure Durable Functions
 heroImage: /images/scheduled_job/header.jpg
-linkedinShared: true
-linkedinSummary: Scheduled jobs are one of the most common patterns in cloud systems, and Azure Functions makes them easy to build reliably. This post looks at patterns for recurring processing and resilient job design.
 ---
 
 As teams move legacy systems out to Azure, or build new systems in Azure, a common processing scenario often arises: running a scheduled job. In this post we'll look at two ways to architect a resilient, scheduled processing pipeline using [Azure Functions](https://learn.microsoft.com/en-us/azure/azure-functions/functions-overview).

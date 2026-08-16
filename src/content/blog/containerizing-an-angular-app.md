@@ -1,6 +1,6 @@
 ---
 title: Containerizing an Angular App
-description: How to containerize an Angular App with startup environment variables
+description: Containerizing a front-end app is more than just putting it in a Docker image. This post shows how to package an Angular app for multiple environments while keeping configuration flexible and production-friendly.
 pubDate: 2022-12-21
 categories:
   - Tech
@@ -10,8 +10,6 @@ tags:
   - Angular
   - Container
 heroImage: /images/containerizing_angular/header.jpg
-linkedinShared: true
-linkedinSummary: Containerizing a front-end app is more than just putting it in a Docker image. This post shows how to package an Angular app for multiple environments while keeping configuration flexible and production-friendly.
 ---
 
 I'm a pretty big fan of [Angular](https://angular.io/docs) and use it for most of my side projects. I'm also a big fan of containerization and I like to host my apps, no matter what they're written in, in docker containers.

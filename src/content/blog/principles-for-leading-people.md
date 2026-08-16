@@ -1,6 +1,6 @@
 ---
 title: "Principles for Leading People"
-description: "A practical framework for first-line leaders: how to set direction, grow people, and shape the environment so teams can do their best work."
+description: "Leadership isn’t about heroics. It’s about creating clarity, growing people, and shaping the environment where teams can do their best work. Here’s a practical framework for leaders who directly manage people."
 pubDate: 2026-08-15
 categories:
   - Tech
@@ -10,7 +10,6 @@ tags:
   - Teamwork
   - Career Growth
 heroImage: /images/principles_leading_people/header.jpg
-linkedinSummary: "Leadership isn’t about heroics. It’s about creating clarity, growing people, and shaping the environment where teams can do their best work. Here’s a practical framework for leaders who directly manage people."
 ---
 
 Leading people is a complex task.

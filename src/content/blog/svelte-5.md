@@ -1,6 +1,6 @@
 ---
 title: Svelte 5 Review
-description: Big Changes to a Good Framework
+description: Svelte 5 brings meaningful improvements to how reactivity and component logic work. This review shares my early impressions of the new model and why it still feels approachable.
 pubDate: 2024-10-14
 categories:
   - Tech
@@ -10,8 +10,6 @@ tags:
   - JavaScript
   - Front-end
 heroImage: /images/svelte-5/header.jpg
-linkedinShared: true
-linkedinSummary: Svelte 5 brings meaningful improvements to how reactivity and component logic work. This review shares my early impressions of the new model and why it still feels approachable.
 ---
 
 I've enjoyed working with [Svelte](https://svelte.dev/) as a Front-end framework for quite a while. While it's not as robust as Angular, or as popular as React, I've used it extensively on various projects and I've come to enjoy how simple and clean it is.
