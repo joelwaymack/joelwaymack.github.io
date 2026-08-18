@@ -27,7 +27,8 @@ Turn a blog post into:
 - Prefer the actual article content over a generic summary.
 - Keep the summary concise, useful, and professional.
 - Write for a technical audience and a personal engineering blog.
-- Avoid hype phrases, buzzwords, or clickbait.
+- Open with an attention-grabbing hook drawn from the article's problem, tension, surprising insight, or practical consequence.
+- Make the hook specific and curiosity-building without resorting to hype, buzzwords, or clickbait.
 - Keep summaries clear and specific enough that a reader can understand the value without reading the article.
 
 ## Output format for the summary
@@ -36,17 +37,18 @@ Produce a summary that is:
 
 - 1 paragraph, 2-4 sentences, usually 120-220 characters for LinkedIn-style sharing
 - written in a clear, human tone
+- led by a hook that makes the reader want to continue
 - focused on the real learning, insight, or takeaway
 - suitable to be pasted directly into `linkedinSummary` frontmatter or a LinkedIn post body
 
 Good structure:
 
-- hook: what problem or topic the post addresses
+- hook: a specific problem, tension, surprising observation, or consequence that earns attention
 - insight: what the article teaches or explains
 - takeaway: why it matters to engineers or leaders
 
 Example:
-"A practical look at building event-driven Azure Functions integrations, with guidance on throughput, reliability, and the tradeoffs that matter in real systems."
+"Event-driven systems can look fast while quietly dropping throughput at scale. This post explains how to build Azure Functions integrations that handle the pressure, and which reliability tradeoffs matter in production."
 
 ## Image creation guidance
 
@@ -73,11 +75,12 @@ Design rules for the header:
 - use the Unsplash image as the backdrop, then layer article-specific content on top
 - choose a background with enough negative space so the text remains readable
 - prefer a background that is slightly darkened or desaturated so the overlay text stands out
+- center the primary logo, subject, or image content in the composition; do not push the main visual to an edge
 
 Recommended image structure:
 
 - background: relevant Unsplash photo matching the article subject
-- overlay: article-specific icon, simple diagram, or the post’s existing hero/technical image placed on the right or lower-right
+- centered focal content: primary logo, article-specific icon, simple diagram, or the post’s existing hero/technical image
 - title in large bold text
 - short subtitle or category label
 - subtle accent color and simple geometric background or translucent panel behind the text
@@ -88,12 +91,15 @@ Recommended image structure:
 Suggested content layout:
 
 - top-left: category or tag such as "Azure", "Architecture", "Engineering", or "Leadership"
-- center-left or center area: article title
-- right side: a supporting image, icon, or technical illustration related to the topic
+- center: the primary logo or image content, with the article title positioned around it without obscuring it
+- secondary area: supporting text, icon, or technical detail arranged around the centered focal content
 - bottom: site name, author, and a small descriptor like "blog post"
 
 Implementation guidance:
 
+- Use the repository's `pnpm generate:social-card -- --slug <post-slug>` command to create a 1920x400 SVG social card under `public/images/social/`.
+- Pass `--logo <path>` when a local logo or focal image is available; the tool centers it in the composition.
+- Pass `--background-url <url>` for a subject-specific Unsplash background, or omit it to use the built-in branded background.
 - search Unsplash with subject-specific keywords from the article and select a photo that visually matches the concept
 - keep the background photo editorial and professional; avoid distracting, noisy, or overly busy imagery
 - use a semi-transparent dark overlay or blur behind the text so white text remains crisp on top of the photo
@@ -104,23 +110,24 @@ Example overlay concept:
 
 - article topic: Azure Functions event processing
 - background: Unsplash cloud/architecture scene with data center or abstract system imagery
-- overlay: a simplified event flow diagram or a function pipeline graphic on the right
-- text: title + small category label placed left or center with white text on a dark transparent panel
+- overlay: a simplified event flow diagram or a function pipeline graphic centered in the composition
+- text: title + small category label arranged around the centered graphic with white text on a dark transparent panel
 
 ## Content workflow
 
 1. Read the article's frontmatter and main body.
 2. Identify the core idea, the audience, and the technical takeaway.
-3. Draft a social summary in 1-2 versions:
+3. Find the strongest hook in the article: a costly mistake, counterintuitive insight, unresolved tension, or concrete outcome.
+4. Draft a social summary in 1-2 versions:
    - a concise version for LinkedIn
    - a slightly fuller version if the user wants more context
-4. If image generation is requested, produce a design brief for the card:
+5. If image generation is requested, produce a design brief for the card:
    - title
    - subtitle
    - palette
    - layout
    - wording
-5. If a local asset is desired, suggest saving it under `public/images/social/` or a blog-specific image folder and naming it consistently with the post slug.
+6. If a local asset is desired, suggest saving it under `public/images/social/` or a blog-specific image folder and naming it consistently with the post slug.
 
 ## Frontmatter conventions
 
@@ -142,7 +149,7 @@ tags:
   - Azure
   - Functions
   - Architecture
-linkedinSummary: "A practical look at building event-driven Azure Functions integrations, with guidance on throughput, reliability, and the tradeoffs that matter in real systems."
+linkedinSummary: "Event-driven systems can look fast while quietly dropping throughput at scale. This post explains how to build Azure Functions integrations that handle the pressure, and which reliability tradeoffs matter in production."
 ---
 ```
 

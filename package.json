@@ -8,7 +8,8 @@
     "build": "astro check && astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "share:linkedin": "node scripts/share-linkedin-post.mjs"
+    "share:linkedin": "node scripts/share-linkedin-post.mjs",
+    "generate:social-card": "node scripts/generate-social-card.mjs"
   },
   "dependencies": {
     "@astrojs/check": "^0.5.10",
